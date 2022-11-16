@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.movielog.mappers.like">
+	<!-- 게시글 추천수 -->
+	<update id="updateLike" parameterType="int">
+		update board set
+		likehit = likehit+1
+		where bno = #{bno}
+	</update>
+
+	<!-- 게시글 추천수취소 -->
+	<update id="updateLikeCancel" parameterType="int">
+		update board set
+		likehit = likehit - 1
+		where bno = #{bno}
+	</update>
+
+	<!-- 게시글 추천 시 Like 테이블에 insert -->
+	<insert id="insertLike">
+		insert into memberlike(likeno , bno , userid)
+		values((SELECT IFNULL(MAX(likeno), 0) + 1 FROM memberlike) ,#{bno} ,#{userid})
+	</insert>
+
+	<!-- 게시글 추천취소 시 delete -->
+	<delete id="deleteLike">
+		delete from memberlike where bno = #{bno} and userid = #{userid}
+	</delete>
+
+	<!-- 게시글 추천 시 Check를 1로 만들어서 중복방지 -->
+	<update id="updateLikeCheck">
+		update memberlike set likecheck = 1
+		where bno = #{bno} and userid = #{userid}
+	</update>
+
+	<!-- 게시글 추천취소 시 다시 0 -->
+	<update id="updateLikeCheckCancel">
+		update memberlike set LIKECHECK = 0
+		where bno = #{bno} and userid = #{userid}
+	</update>
+
+	<!-- 게시글 추천 중복방지 select문 -->
+	<select id="likeCheck" resultType="int">
+		select count(*) from memberlike where bno = #{bno} and userid = #{userid}
+	</select>
+
+</mapper>
