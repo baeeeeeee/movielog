@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movielog.mappers.board">
+
+	<!-- 게시글 작성 -->
+	<insert id="create" useGeneratedKeys="true" keyProperty="bno"
+		parameterType="BoardVO">
+		INSERT INTO board (bgno, title, content,
+		writer,cateCode)
+		VALUES
+		(#{bgno}, #{title},
+		#{content},#{writer},#{cateCode})
+	</insert>
+	<!---->
+
+	<!-- 게시글 조회 -->
+	<select id="read" resultType="BoardVO">
+		SELECT
+		bno,title, replycnt, content,
+		writer, regdate, viewcnt
+		FROM board
+		WHERE
+		bno= #{bno}
+	</select>
+	<!---->
+
+	<!-- 게시글 수정 -->
+	<update id="update">
+		UPDATE board
+		SET
+		title = #{title}, content = #{content}
+		WHERE
+		bno = #{bno}
+	</update>
+	<!---->
+
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		DELETE FROM board
+		WHERE bno =#{bno}
+	</delete>
+	<!---->
+
+	<!-- 게시판 보기 -->
+	<select id="list" resultType="BoardVO">
+    <![CDATA[
+    	SELECT
+        	bno,
+        	c.cateName,
+        	a.cateCode,
+        	title,
+            replycnt,
+            content,
+            writer,
+            regdate,
+            viewcnt,
+            date
+    	FROM board a
+    	left outer join category c on a.cateCode = c.cateCode
+    	WHERE 1=1 AND bgno=#{bgno}
+    	
+    ]]>
+		<include refid="category" />
+		<include refid="search" />
+    <![CDATA[
+    	ORDER BY bno DESC, regdate DESC
+   		LIMIT #{pageStart}, #{perPageNum}
+    ]]>
+	</select>
+	<!---->
+
+	<!-- 게시판 글 갯수 -->
+	<select id="countArticles" resultType="int">
+    <![CDATA[
+    	SELECT
+        COUNT(bno)
+    	FROM board a
+    	left outer join category c on a.cateCode = c.cateCode
+    	WHERE 1=1 AND bno > 0 AND bgno = #{bgno}
+    	]]>
+		<include refid="search" />
+		<include refid="category" />
+	</select>
+	<!---->
+
+	<!-- 게시판 카테고리 -->
+	<sql id="category">
+		<if test="category != null">
+			<if test='category == "200"'>
+				AND a.cateCode = 200
+			</if>
+
+			<if test='category == "201"'>
+				AND a.cateCode = 201
+			</if>
+
+			<if test='category == "202"'>
+				AND a.cateCode = 202
+			</if>
+
+			<if test='category == "203"'>
+				AND a.cateCode = 203
+			</if>
+
+			<if test='category == "204"'>
+				AND a.cateCode = 204
+			</if>
+
+		</if>
+	</sql>
+
+	<select id="category" resultType="com.movielog.domain.CateVO">
+		SELECT tier, cateName, cateCode
+		FROM category
+		order by catecode
+	</select>
+  	<!---->
+
+	<!-- 게시판 검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				AND title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				AND content LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				AND writer LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				AND (
+				title LIKE CONCAT('%', #{keyword}, '%')
+				OR content LIKE CONCAT('%', #{keyword}, '%')
+				)
+			</if>
+		</if>
+	</sql>
+	<!---->
+
+	<!-- 조회수 -->
+	<update id="viewcnt" parameterType="int">
+		UPDATE board
+		SET viewcnt =
+		viewcnt + 1
+		WHERE bno = #{bno}
+	</update>
+
+	<select id="notice" resultType="BoardVO">
+	<![CDATA[select * from (select * from board where bgno=7 order by bno desc) no order by bno desc limit 5]]>
+	</select>
+	
+
+	
+	<update id="updatereplycnt" parameterType="map">
+		UPDATE board
+		SET replycnt = replycnt + #{cnt}
+		WHERE bno = #{bno}
+	</update>
+	<!---->
+
+
+</mapper>
