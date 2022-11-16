@@ -1,14 +1,2 @@
 # 무비로그
-목차
-개발 배경
-개발 과정
-개발 기간
-사용 언어
-프로젝트 목표
-와이어프레임 설계
-API 설계
-DB 설계
-개발 결과
-구현한 기능
-실제 서비스 모습
-피드백
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=90)
