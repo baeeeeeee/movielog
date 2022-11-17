@@ -1,6 +1,10 @@
 # #무비로그(MOVIELOG)🎥
 
 
+![제목 없는 디자인 (5)](https://user-images.githubusercontent.com/118376561/202324029-d59f1afd-9240-4a87-a26e-86d39027db45.jpg)
+
+
+
 <h3>목차</h3>
 
 
@@ -105,6 +109,7 @@
 ***
 
 + 회원정보 수정
+
 ![무비로그 - Chrome 2022-11-17 오전 9_14_04](https://user-images.githubusercontent.com/118376561/202323644-1863f935-7d65-4b13-9ee5-cf38ec369d0a.png)
 
 
