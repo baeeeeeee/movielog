@@ -1,8 +1,7 @@
 # #무비로그(MOVIELOG)🎥
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=200&section=header&text=MOVIE%20LOG&fontSize=70)
 
 
-
-![제목 없는 디자인 (5)](https://user-images.githubusercontent.com/118376561/202324145-435be933-5cc0-4156-b29f-131a10661597.jpg)
 
 
 <h3>목차</h3>
@@ -69,6 +68,7 @@
 <h4>구현한 기능</h4>
 
 + 로그인
+
 <img src="https://user-images.githubusercontent.com/118376561/202320076-2bbafdab-5367-4928-b87c-5b2b304f6cc8.jpg"/>
 
 
@@ -90,6 +90,7 @@
 
 + 게시판
 
+
 ![MOVIELOG - Chrome 2022-11-16 오후 11_53_48](https://user-images.githubusercontent.com/118376561/202322996-af62bf2c-e686-4431-a521-808ff200cd60.png)
 
 다중 게시판, 페이징, 공지사항, 조회 수, 댓글 개수, 인터셉터 활용 - URL 기억으로 로그인, 로그아웃 시 페이지 이동 X
@@ -98,11 +99,13 @@
 
 ![제목 없는 디자인 (3)](https://user-images.githubusercontent.com/118376561/202323122-7976a183-6db5-459d-a346-c9867f0a89bc.jpg)
 
+
 검색, 글 작성 시 카테고리 표시
 
 
 
 ![제목 없는 디자인 (4)](https://user-images.githubusercontent.com/118376561/202323395-bf2588a7-d22f-420b-8e82-9620b38b62f1.jpg)
+
 
 다중 첨부파일, 에디터 적용, 비동기 댓글(등록, 삭제, 수정), 좋아요
 
@@ -110,8 +113,13 @@
 
 + 회원정보 수정
 
+
 ![무비로그 - Chrome 2022-11-17 오전 9_14_04](https://user-images.githubusercontent.com/118376561/202323644-1863f935-7d65-4b13-9ee5-cf38ec369d0a.png)
 
 
 닉네임 변경 (Ajax 중복체크), 이메일 변경, 비밀번호 변경(Ajax 유효성 검사), 회원 탈퇴
+
+
+
+![footer](https://capsule-render.vercel.app/api?type=wave&color=auto&height=200&section=footer)
 
