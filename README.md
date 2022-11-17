@@ -1,8 +1,8 @@
 # #무비로그(MOVIELOG)🎥
 
 
-![제목 없는 디자인 (5)](https://user-images.githubusercontent.com/118376561/202324029-d59f1afd-9240-4a87-a26e-86d39027db45.jpg)
 
+![제목 없는 디자인 (5)](https://user-images.githubusercontent.com/118376561/202324145-435be933-5cc0-4156-b29f-131a10661597.jpg)
 
 
 <h3>목차</h3>
